@@ -1,0 +1,15 @@
+.modal-sheet .modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+.modal-sheet .modal-footer {
+  padding-bottom: 2rem;
+}
+
+/* CSS personalizado para modal-sheet */
+.modal.modal-sheet {
+  background: rgba(0, 0, 0, 0.5); /* Adicione um fundo escuro semitransparente */
+  display: flex !important; /* Forçar exibição como flex para impedir o clique fora do modal */
+  align-items: center;
+  justify-content: center;
+}

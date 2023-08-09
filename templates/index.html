@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block conteudo%}
+  <main class="px-3">
+    <h1>Leve uma recordação desse momento.</h1>
+    <p class="lead">Capture o momento e crie uma recordação inesquecível com nosso totem de fotos!</p>
+    <h3> LEVANTE A MÃO, será iniciado um contador de 5 segundos, em seguida serão capturadas 03 fotos para a montagem. </h3>
+    <p class="lead"> Comece a criar suas memórias agora mesmo!</p>
+    <p class="lead">
+      <img src="{{ url_for('video_feed') }}" height="600"  /> <!-- width="800" -->
+    </p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white" onclick="saveImage()">Tirar Foto</a>
+    </p>
+  </main>
+
+  <!-- Use a bootstrap modal to show the photo taken and the QR code -->
+  <div class="modal modal-sheet" data-backdrop="static" data-keyboard="false" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="photoModalLabel">Acesse o QR CODE para baixar a imagem</h2
+          <h5> Após baixar as fotos, CLIQUE em FECHAR para iniciar nova CAPTURA.</h2>
+        </div>
+        <div class="modal-body">
+          <!-- Use another bootstrap row to place the photo taken and the QR code side by side -->
+          <div class="row">
+            <!-- Use another bootstrap column to place the photo taken on the left -->
+            <div class="col-12">
+              <h1>QR Code</h1>
+            <img id="qr_image" src="" alt="QR Code" height="200"> <!--width="200"-->
+            </div>
+          </div>
+          <div class="row">
+            <!-- Use another bootstrap column to place the photo taken on the left -->
+            <div class="col-12">
+              <img id="saved_image" src="" height="480"> <!-- width="640"-->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="fecharModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock%}
+ 

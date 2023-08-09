@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Totem de Fotos - SENAI-LP</title>
+    <link rel="icon" type="image/x-icon" href="static/favicons/favicon-16x16.png">
+    <style>
+        body {
+          background-image: url("/static/images/fundo.jpg");
+          color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Background Image</h2>
+
+    <p>By default, the background image will repeat itself if it is smaller than the element where it is specified, in this case the body element.</p>
+    <img src="{{ url_for('video_feed') }}" width="1080" height="720" />
+    <button onclick="saveImage()">Tirar Foto</button>
+    <img id="saved_image" src="static/photos/SENAI-SP.jpg" width="640" height="480">
+    <h1>QR Code Flask</h1>
+    <button onclick="createQRCode()">Criar QR Code</button>
+    <img id="qr_image" src="" alt="QR Code">
+
+    <script>
+        function saveImage() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/captura_foto');            
+            xhr.onload = function() {
+                var image = document.getElementById('saved_image');
+                var name = xhr.responseText;
+                image.src = 'static/photos/' + name;
+            };
+            xhr.send();
+        }
+        function createQRCode() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/qr');
+            xhr.onload = function() {
+                var image = document.getElementById('qr_image');
+                image.src = '/qr';
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1>Configuração da Webcam</h1>
+<form method="post">
+    <div>
+        <label for="resolution">Resolução:</label>
+        <select id="resolution" name="resolution">
+            <option value="feed">Feed do Instagram (1080x1080)</option>
+            <option value="story">Story do Instagram (1080x1920)</option>
+        </select>
+    </div>
+    <div>
+    <label for="width">Insira o site ngrok:</label>
+    <input type="text" id="site_url" name="site_url">
+    <br>
+    <!--<label for="height">Altura:</label>
+    <input type="text" id="height" name="height"> -->
+    <br>
+    <input type="submit" value="Definir Resolução">
+</form>
+{% endblock%}
