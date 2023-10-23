@@ -6,8 +6,19 @@ from io import BytesIO
 import numpy as np
 import mediapipe as mp
 import time
+import subprocess
+
 
 app = Flask(__name__)
+
+# # O comando DOS que você deseja executar
+# comando = "ngrok http 2204"
+
+# # Use subprocess.run() para executar o comando
+# resultado = subprocess.run(comando, shell=True, text=True, capture_output=True)
+
+# # Imprima a saída do comando
+# print(resultado.stdout)
 
 # Inicializa a captura da webcam
 video = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -36,6 +47,7 @@ foto_seq = 0
 detectado = False
 disparo = False
 url_qr = "https://b39c-2804-431-cffe-4fab-5474-f8b3-44e6-a09e.ngrok-free.app/"
+img_fundo = "static/images/mundosenai.png"
 
 # Inicializa a contagem de tempo
 start_time = None
@@ -185,7 +197,7 @@ def capturarFoto():
                 # Cria uma imagem em branco para o painel de fotos
                 bg_foto = np.zeros((h+borda, w+borda, 3), dtype=np.uint8)
                 
-                moldura = cv2.imread("static/images/arraia.jpg")
+                moldura = cv2.imread(img_fundo)
                 nome_foto = f'foto_{str(uuid.uuid4())}.png'
                             
                 
